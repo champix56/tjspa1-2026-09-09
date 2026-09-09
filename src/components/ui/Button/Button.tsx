@@ -1,7 +1,24 @@
 import React from "react";
-const Button = ({text}) => {
-  console.trace(text);
+interface IButtonProps {
+  text: string;
+  type:'submit'|'reset'|'button';  
+  fn?: Function;
+  //demo
+  chOrNum?:string|number
+  numb?: number;
+  bl?: boolean;
+  nu?: null;
+  un?: undefined;
+  st?: string;
 
-  return <button className="Button">{text}</button>;
+  fn2?: (arg: number) => void;
+  obj?: {abc:string};
+  arr?: number[];
+  balise?: React.ReactNode;
+}
+const Button = (props: IButtonProps) => {
+  console.trace(props);
+
+  return <button className="Button">{props.text}</button>;
 };
 export default Button;
