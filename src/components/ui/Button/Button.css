@@ -1,0 +1,21 @@
+.Button {
+  padding: 5px 10px;
+  font-size: xx-large;
+  font-weight: 900;
+  border: none;
+  border-radius: 8px;
+
+  min-width: 100px;
+  min-height: 30px;
+
+  margin-bottom: 25px;
+  margin-right: 25px;
+
+  box-shadow: 25px 25px 20px grey;
+
+  background-color: skyblue;
+  color: white;
+}
+.Button:hover {
+  box-shadow: 15px 15px 20px grey;
+}
