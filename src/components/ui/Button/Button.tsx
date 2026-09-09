@@ -1,10 +1,10 @@
 import React from "react";
 interface IButtonProps {
   text: string;
-  type:'submit'|'reset'|'button';  
-  fn?: Function;
+  type?: "submit" | "reset" | "button";
+  parentOnClickAction?: Function;
   //demo
-  chOrNum?:string|number
+  chOrNum?: string | number;
   numb?: number;
   bl?: boolean;
   nu?: null;
@@ -12,13 +12,25 @@ interface IButtonProps {
   st?: string;
 
   fn2?: (arg: number) => void;
-  obj?: {abc:string};
+  obj?: { abc: any };
   arr?: number[];
   balise?: React.ReactNode;
 }
-const Button = (props: IButtonProps) => {
-  console.trace(props);
+const Button = ({ text, type = "button", parentOnClickAction }: IButtonProps) => {
+  console.trace(text, type);
 
-  return <button className="Button">{props.text}</button>;
+  return (
+    <button
+      className="Button"
+      onClick={(evt) => {
+       // console.log(evt);
+        if (undefined !== parentOnClickAction) {
+          parentOnClickAction(evt);
+        }
+      }}
+    >
+      {text}
+    </button>
+  );
 };
 export default Button;
