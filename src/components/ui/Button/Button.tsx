@@ -1,5 +1,5 @@
 import React from "react";
-const Button = ({text,st="une chaine par default "}) => {
+const Button = ({text}) => {
   console.trace(text);
 
   return <button className="Button">{text}</button>;
