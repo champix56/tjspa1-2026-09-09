@@ -13,6 +13,7 @@ function App() {
         fn={function () {}}
         obj={{ abc: 1 }}
         arr={[1, 2, 3]}
+        balise={<div>coucou</div>}
       ></Button>
       <Button></Button>
       <Button></Button>

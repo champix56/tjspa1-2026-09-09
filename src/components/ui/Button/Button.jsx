@@ -1,14 +1,7 @@
-import React from 'react'
+import React from "react";
+const Button = ({text,st="une chaine par default "}) => {
+  console.trace(text);
 
-const Button = (props) => {
-    console.log(props);
-    
-    return (
-        <>
-        {/* comment */}
-            <button className="Button">benjamin1</button>
-            <button className="Button">benjamin2</button>
-        </>
-        )
-}
-export default Button
+  return <button className="Button">{text}</button>;
+};
+export default Button;
