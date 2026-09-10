@@ -4,7 +4,7 @@ interface IButtonProps {
   text: string;
   type?: "submit" | "reset" | "button";
   parentOnClickAction?: Function;
-  bgcolor: "tomato" | "skyblue" | "aquamarine";
+  bgcolor?: "tomato" | "skyblue" | "aquamarine";
   style?:React.CSSProperties;
   className?:'primary'|'warning'
   //demo

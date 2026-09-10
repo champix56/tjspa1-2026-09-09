@@ -4,6 +4,18 @@ import Button from "../ui/Button/Button";
 function App() {
   return (
     <div>
+      <Button text="">jhfu</Button>
+      <Button text="">
+        <div>gdhsd</div>
+      </Button>
+      <Button text="">
+        <div>tota</div>
+        <div>totb</div>
+      </Button>
+      <Button text="">
+        <div>aaa</div>lkiytgik
+      </Button>
+
       <Button
         text="btn1"
         parentOnClickAction={() => {
@@ -13,7 +25,7 @@ function App() {
       <Button
         bgcolor="skyblue"
         className="warning"
-        style={{textDecoration:'underline', border:'1px solid grey'}}
+        style={{ textDecoration: "underline", border: "1px solid grey" }}
         text="btn2"
         parentOnClickAction={() => {
           alert("btn 2");
