@@ -1,62 +1,32 @@
-import "./App.css";
-import Button from "../ui/Button/Button";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import FlexV3rdGrow from "../layouts/FlexV3rdGrow/FlexV3rdGrow";
+import Header from "../Header/Header";
+import Navbar from "../Navbar/Navbar";
+import FlexW1stGrow from "../layouts/FlexW1stGrow/FlexW1stGrow";
+import MemeForm from "../MemeForm/MemeForm";
+import MemeSvgViewer from "../MemeSVGViewer/MemeSVGViewer";
+import Footer from "../Footer/Footer";
+import { emptyMeme, type MemeInterface } from "orsys-tjs-meme";
 
-function App() {
-  const [counter, setCounter] = useState<number>(0);
-  // const [totoALaPlage, settotoALaPlage] = useState("");
-  useEffect(() => {
-    //mount & update
-    console.log(
-      "%cValeur de counter sync:%s",
-      "color:red;text-decoration:underline;font-size:large",
-      counter,
-    );
+const App = () => {
+const [meme, setmeme] = useState<MemeInterface>(emptyMeme)
 
-    return () => {
-      //will unmount
-    };
-  }, [counter]);
-  useEffect(() => {
-    console.log("cmp mounted");
-    return () => {
-      //dismount
-    };
-  }, []);
-  useEffect(() => {
-    console.log("any mount//updateAction");
-    return () => {
-      //dismount
-    };
-  });
 
   return (
-    <div style={{ textAlign: "center" }}>
-      Voici la valeur de counter :{counter}
-      <div>
-        <hr />
-        <Button
-          bgcolor="tomato"
-          parentOnClickAction={() => {
-            setCounter(counter - 1);
-            console.log(counter);
-          }}
-        >
-          -1
-        </Button>
-        <Button
-          bgcolor="skyblue"
-          parentOnClickAction={() => {
-            setCounter(counter + 1);
-
-            console.log(counter);
-          }}
-        >
-          +1
-        </Button>
-      </div>
+    <div className="App">
+      <FlexV3rdGrow>
+        <Header />
+        <Navbar/>
+        <FlexW1stGrow>
+          <MemeSvgViewer meme={meme}/>
+          <MemeForm meme={meme} onMemeChange={(newMeme)=>{
+            setmeme(newMeme)
+          }}/>
+        </FlexW1stGrow>
+        <Footer/>
+      </FlexV3rdGrow>
     </div>
   );
-}
+};
 
 export default App;

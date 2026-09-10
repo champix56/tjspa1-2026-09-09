@@ -1,21 +1,17 @@
 import { useEffect, type FC } from 'react';
 import styles from './MemeSvgViewer.module.css';
+import type { MemeInterface } from 'orsys-tjs-meme';
 
-interface IMemeSvgViewerProps {}
+interface IMemeSvgViewerProps {
+  meme: MemeInterface
+}
 
-const MemeSvgViewer: FC<IMemeSvgViewerProps> = ({}) => {
-  //const [state, setstate] = useState({})
-  useEffect(() => {
-    console.log('mount');
-    return () => {
-      console.log('unmount')
-    }
-  }, [])
-  
+const MemeSvgViewer: FC<IMemeSvgViewerProps> = ({meme}) => {
+ 
   
   return (
   <div className={styles.MemeSvgViewer} data-testid="MemeSvgViewer">
-    MemeSvgViewer Component
+    {JSON.stringify(meme)}
   </div>
 );}
 

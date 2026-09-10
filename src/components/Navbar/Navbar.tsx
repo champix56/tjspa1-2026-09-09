@@ -1,21 +1,22 @@
-import { useEffect, type FC } from 'react';
+import { type FC } from 'react';
 import styles from './Navbar.module.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import { Container, Nav, Navbar as Nvb } from 'react-bootstrap';
 
-interface INavbarProps {}
+const Navbar: FC = () => {
 
-const Navbar: FC<INavbarProps> = ({}) => {
-  //const [state, setstate] = useState({})
-  useEffect(() => {
-    console.log('mount');
-    return () => {
-      console.log('unmount')
-    }
-  }, [])
-  
-  
   return (
   <div className={styles.Navbar} data-testid="Navbar">
-    Navbar Component
+      <Nvb bg="primary" data-bs-theme="dark">
+        <Container>
+          <Nvb.Brand href="#home">Navbar</Nvb.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+        </Container>
+      </Nvb>
   </div>
 );}
 
