@@ -1,10 +1,11 @@
 import React from "react";
-import style from "./Button.module.css";
+import stylecss from "./Button.module.css";
 interface IButtonProps {
   text: string;
   type?: "submit" | "reset" | "button";
   parentOnClickAction?: Function;
   bgcolor: "tomato" | "skyblue" | "aquamarine";
+  style?:React.CSSProperties;
   className?:'primary'|'warning'
   //demo
   chOrNum?: string | number;
@@ -19,17 +20,20 @@ interface IButtonProps {
   arr?: number[];
   balise?: React.ReactNode;
 }
-const Button = ({
+const Button:React.FC<IButtonProps> = ({
   text,
   type = "button",
+  bgcolor,
+  style,
   parentOnClickAction,
   className="primary"
-}: IButtonProps) => {
+}) => {
   console.trace(text, type);
 
   return (
     <button
-      className={`${style.Button} ${style[className]}`}
+      className={`${stylecss.Button} ${stylecss[className]}`}
+      style={{...style,backgroundColor:bgcolor}}
       onClick={(evt) => {
         // console.log(evt);
         if (undefined !== parentOnClickAction) {

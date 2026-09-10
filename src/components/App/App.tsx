@@ -13,6 +13,7 @@ function App() {
       <Button
         bgcolor="skyblue"
         className="warning"
+        style={{textDecoration:'underline', border:'1px solid grey'}}
         text="btn2"
         parentOnClickAction={() => {
           alert("btn 2");
