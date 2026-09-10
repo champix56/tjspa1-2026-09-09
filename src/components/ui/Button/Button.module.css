@@ -17,7 +17,7 @@
   color: white;
 }
 .Button:hover {
-  box-shadow: 15px 15px 20px grey;
+   
 }
 
 .primary{
@@ -27,4 +27,7 @@
 .warning{
   background-color: tomato;
   color: white;
+}
+.clicked{
+  box-shadow: 5px 5px 25px grey;
 }
