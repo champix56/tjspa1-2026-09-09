@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import stylecss from "./Button.module.css";
+import TemplateName from "../../TemplateName/TemplateName.lazy";
 interface IButtonProps {
   text?: string;
   type?: "submit" | "reset" | "button";
@@ -23,7 +24,7 @@ interface IButtonProps {
 }
 const Button:React.FC<IButtonProps> = ({
   text,
-  type = "button",
+  //type = "button",
   bgcolor,
   style,
   children,
@@ -58,6 +59,7 @@ useEffect(() => {
         }
       }}
     >
+            <TemplateName/>
       {/* {undefined!==text?text:children} */}
       {getChildren()}
     </button>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [counter, setCounter] = useState<number>(0);
-  const [totoALaPlage, settotoALaPlage] = useState("");
+  // const [totoALaPlage, settotoALaPlage] = useState("");
   useEffect(() => {
     //mount & update
     console.log(

@@ -1,0 +1,31 @@
+{
+  "usesTypeScript": true,
+  "usesStyledComponents": false,
+  "usesCssModule": true,
+  "cssPreprocessor": "css",
+  "testLibrary": "Testing Library",
+  "component": {
+    "default": {
+      "path": "src/components",
+      "withStyle": true,
+      "withTest": false,
+      "withStory": true,
+      "withLazy": true,
+      "customTemplates":{
+        "component":"./GRCTemplates/functionWithHooks/TemplateName.tsx",
+        "lazy":"./GRCTemplates/functionWithHooks/TemplateName.lazy.tsx"
+      }
+    }, "layout": {
+      "path": "src/components/layouts",
+      "withStyle": true,
+      "withTest": false,
+      "withStory": true,
+      "withLazy": true,
+      "customTemplates":{
+        "component":"./GRCTemplates/functionLayout/TemplateName.tsx",
+        "lazy":"./GRCTemplates/functionLayout/TemplateName.lazy.tsx",
+        "story":"./GRCTemplates/functionLayout/TemplateName.stories.tsx"
+      }
+    }
+  }
+}
