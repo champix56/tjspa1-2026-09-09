@@ -1,6 +1,5 @@
 import "./App.css";
 import Button from "../ui/Button/Button";
-import Button2 from "../ui/Button2/Button";
 
 function App() {
   return (
@@ -11,7 +10,9 @@ function App() {
           alert("btn 1");
         }}
       />
-      <Button2
+      <Button
+        bgcolor="skyblue"
+        className="warning"
         text="btn2"
         parentOnClickAction={() => {
           alert("btn 2");
