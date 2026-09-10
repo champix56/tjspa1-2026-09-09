@@ -1,9 +1,11 @@
 import React from "react";
-import './Button.css'
+import style from "./Button.module.css";
 interface IButtonProps {
   text: string;
   type?: "submit" | "reset" | "button";
   parentOnClickAction?: Function;
+  bgcolor: "tomato" | "skyblue" | "aquamarine";
+  className:'primary'|'warning'
   //demo
   chOrNum?: string | number;
   numb?: number;
@@ -17,14 +19,18 @@ interface IButtonProps {
   arr?: number[];
   balise?: React.ReactNode;
 }
-const Button = ({ text, type = "button", parentOnClickAction }: IButtonProps) => {
+const Button = ({
+  text,
+  type = "button",
+  parentOnClickAction,
+}: IButtonProps) => {
   console.trace(text, type);
 
   return (
     <button
-      className="Button"
+      className={style.Button}
       onClick={(evt) => {
-       // console.log(evt);
+        // console.log(evt);
         if (undefined !== parentOnClickAction) {
           parentOnClickAction(evt);
         }

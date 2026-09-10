@@ -19,3 +19,12 @@
 .Button:hover {
   box-shadow: 15px 15px 20px grey;
 }
+
+.primary{
+  background-color: skyblue;
+  color: white;
+}
+.warning{
+  background-color: tomato;
+  color: white;
+}
