@@ -5,7 +5,7 @@ interface IButtonProps {
   type?: "submit" | "reset" | "button";
   parentOnClickAction?: Function;
   bgcolor: "tomato" | "skyblue" | "aquamarine";
-  className:'primary'|'warning'
+  className?:'primary'|'warning'
   //demo
   chOrNum?: string | number;
   numb?: number;
@@ -23,12 +23,13 @@ const Button = ({
   text,
   type = "button",
   parentOnClickAction,
+  className="primary"
 }: IButtonProps) => {
   console.trace(text, type);
 
   return (
     <button
-      className={style.Button}
+      className={`${style.Button} ${style[className]}`}
       onClick={(evt) => {
         // console.log(evt);
         if (undefined !== parentOnClickAction) {
