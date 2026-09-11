@@ -9,6 +9,9 @@ import { emptyMeme } from "orsys-tjs-meme";
 // import {images as jsonimagedb} from '../../../db.json'
 import '../../store/store'
 import MemeSVGViewer from "../MemeSVGViewer/MemeSVGViewer";
+import { Route, Routes } from "react-router";
+import Home from "../../pages/Home";
+import Editor from "../../pages/Editor";
 
 const App = () => {
   // const [current, setcurrent] = useState(emptyMeme);
@@ -24,16 +27,12 @@ const App = () => {
         <Header />
         <Navbar />
         <FlexW1stGrow>
-          <MemeSVGViewer
-            // meme={current}
-          />
-          <MemeForm
-            // meme={current}
-          
-            // onMemeChange={(newMeme) => {
-            //   setcurrent(newMeme);
-            // }}
-          />
+          <Routes>
+              <Route path="/" Component={Home}/>
+              <Route path="/editor" Component={Editor}/>
+              <Route path="/editor/:id" Component={Editor}/>
+
+          </Routes>
         </FlexW1stGrow>
         <Footer />
       </FlexV3rdGrow>

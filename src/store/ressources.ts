@@ -3,12 +3,14 @@ import { type ImageInterface, type MemeInterface } from "orsys-tjs-meme";
 import datas from "../../db.json";
 import { saveMeme } from "./currentMeme";
 interface IRessourcesState {
+    isLoaded:boolean;
   images: Array<ImageInterface>;
   memes: Array<MemeInterface>;
 }
 const initialState: IRessourcesState = {
   images: [],
   memes: [],
+  isLoaded:false
 };
 
 const ressources = createSlice({
@@ -23,6 +25,7 @@ const ressources = createSlice({
     builder.addCase(LoadRessources.fulfilled, (state, action) => {
       state.images = action.payload.images;
       state.memes = action.payload.memes;
+      state.isLoaded=true;
     });
     builder.addCase(saveMeme.fulfilled, (state, action) => {
       const position = state.memes.findIndex((e) => e.id === action.payload.id);
