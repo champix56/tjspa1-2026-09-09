@@ -11,7 +11,7 @@ import '../../store/store'
 import MemeSVGViewer from "../MemeSVGViewer/MemeSVGViewer";
 
 const App = () => {
-  const [current, setcurrent] = useState(emptyMeme);
+  // const [current, setcurrent] = useState(emptyMeme);
   // const [images, setimages] = useState([]);
   // useEffect(() => {
   //   const promise=fetch('http://localhost:5629/images').then(response=>response.json())
@@ -25,14 +25,14 @@ const App = () => {
         <Navbar />
         <FlexW1stGrow>
           <MemeSVGViewer
-            meme={current}
+            // meme={current}
           />
           <MemeForm
-            meme={current}
+            // meme={current}
           
-            onMemeChange={(newMeme) => {
-              setcurrent(newMeme);
-            }}
+            // onMemeChange={(newMeme) => {
+            //   setcurrent(newMeme);
+            // }}
           />
         </FlexW1stGrow>
         <Footer />

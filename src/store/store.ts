@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ressourcesReducer, { addImage, LoadRessources } from "./ressources";
+import currentReducer from './currentMeme'
 
 const store = configureStore({
-  reducer: ressourcesReducer
+  reducer: {ressources:ressourcesReducer, current:currentReducer}
 });
 
 // console.log(store.getState());

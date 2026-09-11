@@ -1,38 +1,51 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import {type ImageInterface, type MemeInterface} from 'orsys-tjs-meme'
-import datas from '../../db.json'
-interface IRessourcesState{
-    images:Array<ImageInterface>;
-    memes:Array<MemeInterface>
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { type ImageInterface, type MemeInterface } from "orsys-tjs-meme";
+import datas from "../../db.json";
+import { saveMeme } from "./currentMeme";
+interface IRessourcesState {
+  images: Array<ImageInterface>;
+  memes: Array<MemeInterface>;
 }
-const initialState:IRessourcesState = {
-    images:[],
-    memes:datas.memes
-}
+const initialState: IRessourcesState = {
+  images: [],
+  memes: [],
+};
 
 const ressources = createSlice({
-  name: 'ressources',
+  name: "ressources",
   initialState,
   reducers: {
-    addImage:(state,action:{type:string,payload:ImageInterface})=>{
-        state.images.push(action.payload)
-    }
+    addImage: (state, action: { type: string; payload: ImageInterface }) => {
+      state.images.push(action.payload);
+    },
   },
-  extraReducers:(builder)=>{
-    builder.addCase(LoadRessources.fulfilled,(state,action)=>{
-        state.images=action.payload
-    })
-  }
+  extraReducers: (builder) => {
+    builder.addCase(LoadRessources.fulfilled, (state, action) => {
+      state.images = action.payload.images;
+      state.memes = action.payload.memes;
+    });
+    builder.addCase(saveMeme.fulfilled, (state, action) => {
+      const position = state.memes.findIndex((e) => e.id === action.payload.id);
+      if (position === -1) state.memes.push(action.payload);
+      else {
+        state.memes[position] = action.payload;
+      }
+    });
+  },
 });
 
-export const {addImage} = ressources.actions
+export const { addImage } = ressources.actions;
 
 // export const ressourcesReducer= ressources.reducer
-const ressourcesReducer= ressources.reducer
-export default ressourcesReducer
+const ressourcesReducer = ressources.reducer;
+export default ressourcesReducer;
 
-
-export const LoadRessources=createAsyncThunk('ressources/load',async()=>{
-    const promise= await fetch('http://localhost:5629/images')
-    return await promise.json()
-})
+export const LoadRessources = createAsyncThunk("ressources/load", async () => {
+  const promiseMemes = fetch("http://localhost:5629/memes");
+  const promiseImages = fetch("http://localhost:5629/images");
+  const globalPromise = await Promise.all([promiseImages, promiseMemes]);
+  return await {
+    images: await globalPromise[0].json(),
+    memes: await globalPromise[1].json(),
+  };
+});
