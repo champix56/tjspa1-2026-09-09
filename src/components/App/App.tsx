@@ -7,6 +7,7 @@ import MemeForm from "../MemeForm/MemeForm";
 import Footer from "../Footer/Footer";
 import { emptyMeme, MemeSVGViewer } from "orsys-tjs-meme";
 // import {images as jsonimagedb} from '../../../db.json'
+import '../../store/store'
 
 const App = () => {
   const [current, setcurrent] = useState(emptyMeme);
