@@ -3,15 +3,11 @@ import styles from "./MemeForm.module.css";
 import { emptyMeme, type MemeInterface } from "orsys-tjs-meme";
 
 interface IMemeFormProps {
-meme:MemeInterface
-onMemeChange:(n:MemeInterface)=>void
-
+  meme: MemeInterface;
+  onMemeChange: (n: MemeInterface) => void;
 }
 
-const MemeForm: FC<IMemeFormProps> = ({
-meme,onMemeChange
-
-}) => {
+const MemeForm: FC<IMemeFormProps> = ({ meme, onMemeChange }) => {
   const [state, setState] = useState<MemeInterface>(meme);
   useEffect(() => {
     //montage
@@ -19,8 +15,18 @@ meme,onMemeChange
       //demontage
     };
   }, []);
-const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)=>{
-    setState({...state, [(evt.target.name)]: parseInt(evt.target.value) });
+  const onNumberChange = (
+    evt: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) => {
+    setState({ ...state, [evt.target.name]: parseInt(evt.target.value) });
+  };
+  const onStringChange = (
+    evt: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) => {
+    setState({ ...state, [evt.target.name]: evt.target.value });
+  };
+  const onCheckChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)=>{
+    setState({...state, [(evt.target.name)]: evt.target.checked });
 }
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
@@ -29,7 +35,7 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           <h1>Titre</h1>
         </label>
         <br />
-        <input name="titre" id="titre" value="React is easy" />
+        <input name="titre" id="titre" value={state.titre}  onChange={onStringChange} />
         <hr />
         <label htmlFor="image">
           <h2>Image</h2>
@@ -46,7 +52,7 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           <h2>texte</h2>
         </label>
         <br />
-        <input name="text" id="text" type="text" value="Le js m'a tué" />
+        <input name="text" id="text" type="text" value={state.text}   onChange={onStringChange} />
         <br />
         <label htmlFor="x">
           <h2 style={{ display: "inline" }}>x :</h2>
@@ -56,10 +62,8 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           name="x"
           id="x"
           type="number"
-           value={state.x}
-          onChange={(evt) => {
-            setState({...state, [(evt.target.name)]: parseInt(evt.target.value) });
-          }}
+          value={state.x}
+          onChange={onNumberChange}
         />
         <label htmlFor="y">
           <h2 style={{ display: "inline" }}>y :</h2>
@@ -70,9 +74,7 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           id="y"
           type="number"
           value={state.y}
-          onChange={(evt) => {
-             setState({...state, [(evt.target.name)]: parseInt(evt.target.value) });
-          }}
+          onChange={onNumberChange}
         />
         <hr />
         <br />
@@ -80,7 +82,7 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
         <label htmlFor="color">
           <h2 style={{ display: "inline" }}>color :</h2>
         </label>
-        <input name="color" id="color" type="color" value="#FFFFFF" />
+        <input name="color" id="color" type="color" value={state.color}   onChange={onStringChange} />
         <br />
         <label htmlFor="fontSize">
           <h2 style={{ display: "inline" }}>font-size :</h2>
@@ -92,9 +94,7 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           type="number"
           min="0"
           value={state.fontSize}
-          onChange={(evt) => {
-            setState({...state, fontSize: parseInt(evt.target.value) });
-          }}
+          onChange={onNumberChange}
         />
         px
         <br />
@@ -109,10 +109,10 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           min="100"
           step="100"
           max="900"
-          value="900"
+          value={state.fontSize}
         />
         <br />
-        <input name="underine" id="underline" type="checkbox" />
+        <input name="underline" id="underline" type="checkbox" checked={state.underline}   onChange={onCheckChange} />
         &nbsp;
         <label htmlFor="underline">
           <h2 style={{ display: "inline" }}>underline</h2>
@@ -123,7 +123,7 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           <h2 style={{ display: "inline" }}>italic</h2>
         </label>
         &nbsp;
-        <input name="italic" id="italic" type="checkbox" />
+        <input name="italic" id="italic" type="checkbox" checked={state.italic}   onChange={onCheckChange} />
         <hr />
         <br />
         <label htmlFor="frameSizeX">
@@ -148,14 +148,17 @@ const onNumberChange=(evt:React.ChangeEvent<HTMLInputElement, HTMLInputElement>)
           id="frameSizeY"
           type="number"
           min="0"
-          value="0"
+          value={state.frameSizeY}
+          onChange={onNumberChange}
         />
         px
         <br />
       </form>
-      <button onClick={()=>{
-        onMemeChange(state)
-      }}/>
+      <button
+        onClick={() => {
+          onMemeChange(state);
+        }}
+      />
     </div>
   );
 };
